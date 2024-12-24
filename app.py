@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the model and dataset
-loaded_model = joblib.load('./DoctorModel')
+loaded_model = joblib.load('./DoctorModel.joblib')
 doctors = pd.read_csv('./Doctor_Versus_Disease.csv', encoding='ISO-8859-1')
 
 # List of symptoms
@@ -72,6 +72,8 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=8001, debug=True)
+    print('Server Running')
